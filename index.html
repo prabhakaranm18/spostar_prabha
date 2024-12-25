@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="/Media/Image/Spotsar Icon.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            color: #333333;
+            background-color: #121212;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .login {
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            background-color: #1e1e1e;
+            transition: background-color 0.3s ease;
+        }
+        .logom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            max-width: 65px;
+            margin-right: 10px;
+            border-radius: 25px;
+        }
+        .logoname {
+            font-size: 32px;
+            color:cyan;
+            font-weight: 600;
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 22px;
+            color: white;
+        }
+        .inputm {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color:  white;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .submit button:hover {
+            background-color: #218838; 
+        }
+        .fp {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            color:cyan;
+            text-decoration: none;
+        }
+        .fp:hover {
+            text-decoration: underline;
+        }
+        .signup {
+            margin-top: 20px;
+            font-size: 14px;
+            color: rgb(255, 255, 255);
+        }
+        .signup a {
+            color: rgb(21, 235, 250);
+            text-decoration: none;
+        }
+        .signup a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+        .theme-toggle {
+            position: absolute; 
+            top: 20px;
+            right: 20px;
+            height: 50px;
+            width: 50px;
+            background-color: #ffffff;
+            color: #121212;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.light-mode .theme-toggle {
+            background-color: #333333;
+            color: #ffffff;
+        }
+
+        body.light-mode {
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+
+        body.light-mode h2, body.light-mode label {
+            color: #333333;
+        }
+
+        body.light-mode .login {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        body.light-mode .signup p {
+            color: #333333;
+        }
+
+    @media screen and (max-width: 768px) {
+        .login {
+            max-width: 90%;
+            padding: 20px;
+        }
+
+        .logoname {
+            font-size: 28px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        label {
+        font-size: 14px;
+        }
+
+        input {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .fp {
+            font-size: 12px;
+        }
+
+        .signup p {
+            font-size: 12px;
+        }
+
+        .theme-toggle {
+            height: 40px;
+            width: 40px;
+            font-size: 16px;
+    }
+    }
+
+    @media screen and (max-width: 480px) {
+        .login {
+            max-width: 95%;
+            padding: 15px;
+        }
+
+        .logoname {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 18px;
+        }
+
+        label {
+            font-size: 12px;
+        }
+
+        input {
+            padding: 6px;
+            font-size: 12px;
+        }
+
+        button {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .fp {
+            font-size: 10px;
+        }
+
+        .signup p {
+            font-size: 10px;
+        }
+
+        .theme-toggle {
+            height: 35px;
+            width: 35px;
+            font-size: 14px;
+    }
+    }
+    </style>
+</head>
+<body>
+
+    <button class="theme-toggle" onclick="toggleDarkMode()">
+        <span class="mode-icon">&#9728;</span>
+    </button>
+    
+
+    <div class="login">
+        <div class="logom">
+            <img src="/Media/Image/Spotsar Icon.jpg" alt="Logo" class="logo">
+            <div class="logoname">𝐒𝐏𝐎𝐓𝐒𝐓𝐀𝐑</div>
+        </div>
+        <form class="login-form" onsubmit="return validateLogin()">
+            <h2>Login</h2>
+            <div class="inputm">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+            </div>
+            <div class="inputm">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+            <button type="submit" class="submit">Login</button>
+            <div id="error-message" class="error-message"></div>
+            <a href="/HTML/fp.html" class="fp">Forgot Password?</a>
+            <div class="signup">
+                <p>Don't have an account? <a href="/HTML/signup.html">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        var correctEmail = "prabha@123";
+        var correctPassword = "prabha123";
+
+        function validateLogin() {
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var errorMessage = document.getElementById("error-message");
+
+            if (email === correctEmail && password === correctPassword) {
+                window.location.href = "/HTML/choose.html";  
+                return false; 
+            } else {
+                errorMessage.textContent = "Please Register and Then Login";
+                return false; 
+            }
+        }
+
+        // Theme toggle functionality
+        function toggleDarkMode() {
+                const body = document.body;
+                const modeIcon = document.querySelector('.mode-icon');
+                body.classList.toggle('light-mode');
+                
+                if (body.classList.contains('light-mode')) {
+                    modeIcon.innerHTML = '&#9790;'; 
+                } else {
+                    modeIcon.innerHTML = '&#9728;';
+                }
+            }
+    </script>
+</body>
+</html>
